@@ -22,7 +22,7 @@ pipeline {
       steps {
         echo "deploying the application"
         /* git clone gitのクレデンシャル*/
-        git(credentialsId: 'SSH2', branche: [[name: '*/main']],url: 'git@github.com:koshiishide/jenkins_test.git')
+        git(credentialsId: 'SSH2', branch: [[name: '*/main']],url: 'git@github.com:koshiishide/jenkins_test.git')
       }
     }
   }
