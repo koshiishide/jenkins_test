@@ -17,7 +17,7 @@ pipeline {
     {
       steps {
         echo "deploying the application"
-        git credentialsId: 'SSH', url: 'https://github.com/koshiishide/jenkins_test.git'
+        git credentialsId: 'SSH', url: 'git@github.com:koshiishide/jenkins_test.git'
       }
     }
   }
