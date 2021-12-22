@@ -1,9 +1,10 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
+    stage('checkout') {
           steps {
             sh 'echo "building the repo"'
+            checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'SSH2', url: 'git@github.com:koshiishide/jenkins_test.git']]])
           }
     }
   
@@ -20,8 +21,8 @@ pipeline {
     {
       steps {
         echo "deploying the application"
-        /* git clone gitのクレデンシャル*/
-        git(credentialsId: 'SSH2', url: 'git@github.com:koshiishide/jenkins_test.git')
+        /* git clone gitのクレデンシャル
+        git(credentialsId: 'SSH2', url: 'git@github.com:koshiishide/jenkins_test.git')*/
       }
     }
   }
