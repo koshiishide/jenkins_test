@@ -9,6 +9,9 @@ pipeline {
   
     stage('Test') {
       steps {
+        /*
+        unit testでエラーだとDeployには進めない
+        */
         sh 'python3 test_app.py'
       }
     }
@@ -17,9 +20,8 @@ pipeline {
     {
       steps {
         echo "deploying the application"
-        /* 
-        git credentialsId: 'SSH2', url: 'git@github.com:koshiishide/jenkins_test.git'
-        */
+        /* git clone gitのクレデンシャル*/
+        git(credentialsId: 'SSH2', url: 'git@github.com:koshiishide/jenkins_test.git')
       }
     }
   }
