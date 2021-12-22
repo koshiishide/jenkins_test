@@ -2,19 +2,16 @@ pipeline {
   agent any
   stages {
     stage('Build') {
-      parallel {
         stage('Build') {
           steps {
             sh 'echo "building the repo"'
           }
         }
-      }
     }
   
     stage('Test') {
       steps {
         sh 'python3 test_app.py'
-        input(id: "Deploy Gate", message: "Deploy ${params.project_name}?", ok: 'Deploy')
       }
     }
   
@@ -22,7 +19,7 @@ pipeline {
     {
       steps {
         echo "deploying the application"
-        sh "sudo nohup python3 app.py > log.txt 2>&1 &"
+        git credentialsId: '585697dd-fee7-4196-9ed3-50130e29007b', url: 'https://github.com/koshiishide/jenkins_test.git'
       }
     }
   }
