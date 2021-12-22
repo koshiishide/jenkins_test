@@ -4,7 +4,8 @@ pipeline {
     stage('checkout') {
           steps {
             sh 'echo "building the repo"'
-            checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'SSH2', url: 'git@github.com:koshiishide/jenkins_test.git']]])
+            checkout scm
+            //checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'SSH2', url: 'git@github.com:koshiishide/jenkins_test.git']]])
           }
     }
   
@@ -17,12 +18,13 @@ pipeline {
       }
     }
   
-    stage('Deploy')
+    stage('Run')
     {
       steps {
         echo "deploying the application"
-        /* git clone gitのクレデンシャル*/
-        git(credentialsId: 'SSH2', branch: [[name: '*/main']],url: 'git@github.com:koshiishide/jenkins_test.git')
+        sh 'python3 flask run'
+        /* git clone gitのクレデンシャル
+        git(credentialsId: 'SSH2',url: 'git@github.com:koshiishide/jenkins_test.git')*/
       }
     }
   }
@@ -33,7 +35,6 @@ pipeline {
         }
         success {                   
             echo "Flask Application Up and running!!"
-            sh 'python3 run'
         }
         failure {
             echo 'Build stage failed'
