@@ -21,8 +21,8 @@ pipeline {
     {
       steps {
         echo "deploying the application"
-        /* git clone gitのクレデンシャル
-        git(credentialsId: 'SSH2', url: 'git@github.com:koshiishide/jenkins_test.git')*/
+        /* git clone gitのクレデンシャル*/
+        git(credentialsId: 'SSH2', url: 'git@github.com:koshiishide/jenkins_test.git')
       }
     }
   }
@@ -33,6 +33,7 @@ pipeline {
         }
         success {                   
             echo "Flask Application Up and running!!"
+            sh 'python3 run'
         }
         failure {
             echo 'Build stage failed'
