@@ -22,7 +22,7 @@ pipeline {
     {
       steps {
         echo "deploying the application"
-        sh 'cp -f ./app.py ./test_app /home/CI_sample'
+        sh 'cp -f ./app.py ./test_app.py /home/CI_sample'
         /* git clone gitのクレデンシャル
         git(credentialsId: 'SSH2',url: 'git@github.com:koshiishide/jenkins_test.git')*/
       }
