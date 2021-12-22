@@ -22,7 +22,7 @@ pipeline {
     {
       steps {
         echo "deploying the application"
-        sh 'flask run'
+        sh 'flask run &'
         /* git clone gitのクレデンシャル
         git(credentialsId: 'SSH2',url: 'git@github.com:koshiishide/jenkins_test.git')*/
       }
