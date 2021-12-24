@@ -12,7 +12,7 @@ class TestFlaskHello(unittest.TestCase):
     def test_get(self):
         response = self.app.get('/')
         assert response.status_code == 200
-        assert response.data.decode() == 'Joy is alwais in Sugamo-NewDays'
+        assert response.data.decode() == 'hoge!'
 
 if __name__ == '__main__':
     unittest.main()
