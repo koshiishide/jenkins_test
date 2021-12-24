@@ -15,8 +15,5 @@ def hello():
 >>>>>>> a1dafd112940cce400a34b991b0bb6603be28edf
 
 
-
-
-
 if __name__ == '__main__':
     app.run(debug=True)
