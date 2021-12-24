@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def hello():
 <<<<<<< HEAD
-    return 'Hacked!', 200
+    return 'See you, Joy!', 200
 =======
     return 'Hello, Joy Wu!', 200
 >>>>>>> f7e1d3b13e0eb2b5595e8426eab203541169cbb4
